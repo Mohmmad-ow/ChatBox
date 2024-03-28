@@ -2,11 +2,17 @@ import * as React from 'react';
 import { StyleSheet, Text, View, Image, Button, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const facebook = require("../../../assets/facebook.png")
-const apple = require("../../../assets/apple.png")
-const google = require("../../../assets/google.png")
+import Services from '../../components/Services';
 
-export default () => {
+
+export default ({navigation, route}) => {
+  const login = () => {
+    navigation.navigate("Login")
+  }
+  const signup = () => {
+    navigation.navigate("Signup")
+  }
+
   return (
     <LinearGradient
       // Background Linear Gradient
@@ -27,26 +33,20 @@ export default () => {
           Our chat app is the perfect way to stay connected with friends and family.
         </Text>
       </View>
-      <View style={{ display: "flex", flexDirection: "row", gap: 20, marginTop: 40 }}>
-        <View style={styles.services}>
-          <Image style={styles.img} source={facebook}></Image>
-        </View>
-        <View style={styles.services}>
-          <Image style={styles.img} source={google}></Image>
-        </View>
-        <View style={styles.services}>
-          <Image style={styles.img} source={apple}></Image>
-        </View>
-      </View>
+      {/* Icons are here */}
+      <Services appleColor={1} borderColor={'#FFFFFF'} viewStyle={{ display: "flex", flexDirection: "row", gap: 20, marginTop: 40 }} />
       <View style={styles.hrContainer} >
         <View style={styles.hr}></View>
         <Text style={styles.logoText}>OR</Text>
         <View style={styles.hr}></View>
       </View>
-      <Pressable style={styles.btn}>
-        <Text style={styles.btnText}>Sign up witn a mail</Text>
+      <Pressable style={styles.btn} onPress={signup}>
+        <Text style={styles.btnText}>Sign up with a mail</Text>
       </Pressable>
-      <Text style={styles.loginLink}>Existing account? <Text style={{color: "#FFFFFF", fontWeight: "600"}}>Log in</Text></Text>
+      <View style={styles.loginLink}>
+      <Text style={{color: "#B9C1BE"}}>Existing account?</Text>
+      <Pressable onPress={login}><Text style={{color: "#FFFFFF", fontWeight: "600"}}>Log in</Text></Pressable>
+      </View>
     </LinearGradient>
   );
 }
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
 
   },
   logoText: {
-
     fontSize: 16,
     color: "#FFFFFF"
   },
@@ -117,8 +116,11 @@ const styles = StyleSheet.create({
     color: "#000000"
   },
   loginLink: {
-    textAlign: "center",
-    color: "#B9C1BE",
-    marginTop:40 
+    display: "flex", 
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center", 
+    marginTop: 35,
+    gap: 4
   }
 });
