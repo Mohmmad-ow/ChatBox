@@ -1,48 +1,52 @@
-import { Text, View, ScrollView, StyleSheet, Image } from "react-native"
+import { Text, View, ScrollView, StyleSheet, Image, Pressable } from "react-native"
 import TopBar from "../components/TopBar"
 
 const profiles = [
-    {name: "Max", img: require("../../assets/bussiness-man.png"), borderColor: "#4c46c8"},
-    {name: "Marzia", img: require("../../assets/profile(1).png"), borderColor: "#365e7d"},
-    {name: "Moe", img: require("../../assets/user.png"), borderColor: "#337180"},
-    {name: "Ali", img: require("../../assets/profile.png"), borderColor: "#4070ff"},
+    { name: "Max", img: require("../../assets/images/bussiness-man.png"), borderColor: "#4c46c8" },
+    { name: "Marzia", img: require("../../assets/images/profile(1).png"), borderColor: "#365e7d" },
+    { name: "Moe", img: require("../../assets/images/user.png"), borderColor: "#337180" },
+    { name: "Ali", img: require("../../assets/images/profile.png"), borderColor: "#4070ff" },
 ]
 
-const contacts = [
-    {name: "Max", img: require("../../assets/bussiness-man.png"), lastMessage: "send nudes"},
-    {name: "Marzia", img: require("../../assets/profile(1).png"), lastMessage: "it's been an honer..."},
-    {name: "Moe", img: require("../../assets/user.png"), lastMessage: "ay it's yo boy skiny penisy"},
-    {name: "Ali", img: require("../../assets/profile.png"), lastMessage: "what's going on here"},
+export const contacts = [
+    { name: "Max", img: require("../../assets/images/bussiness-man.png"), lastMessage: "send nudes", imgName: "bussiness-man.png" },
+    { name: "Marzia", img: require("../../assets/images/profile(1).png"), lastMessage: "it's been an honer...", imgName: "profile(1).png" },
+    { name: "Moe", img: require("../../assets/images/user.png"), lastMessage: "ay it's yo boy skiny penisy", imgName: "user.png" },
+    { name: "Ali", img: require("../../assets/images/profile.png"), lastMessage: "what's going on here", imgName: "profile.png" },
 ]
 
-export default () => {
+export default ({navigation, img}) => {
+    const handleGoToContact = ({id, name, img}) => {
+        navigation.navigate("DM", {name: name, id: id, img: img})
+    }
+
 
     return (
-       <ScrollView style={styles.container}>
+        <ScrollView style={styles.container}>
             <TopBar />
             <View style={styles.profiles}>
                 {profiles.map((profile, idx) => (
-                    (<View style={styles.profile}>
-                        <View style={{...styles.profile, borderColor: profile.borderColor}}>
-                        <Image style={styles.profileImg} source={profile.img} />
-                    </View>
+                    (<View key={idx} style={styles.profile}>
+                        <View style={{ ...styles.profile, borderColor: profile.borderColor }}>
+                            <Image style={styles.profileImg} source={profile.img} />
+                        </View>
                         <Text style={styles.profileTxt}>{profile.name}</Text>
                     </View>)
                 ))}
             </View>
             <View style={styles.contactsContainer}>
-                {contacts.map((contact) => (
-                    <View style={styles.contactContainer}>
-                        <View style={styles.contactImage}><Image style={styles.profileImg} source={contact.img} /></View>
-                        <View style={styles.contactDetail}>
-                            <Text style={styles.contactDetailName}>{contact.name}</Text>
-                            <Text style={styles.contactDetailMessage}>{contact.lastMessage}</Text>    
-                        </View>
-                        <View style={styles.contactTail}><Text>2 minutes</Text></View>
-                    </View>
+                {contacts.map((contact, idx) => (
+                        <Pressable key={idx} style={styles.contactContainer} onPress={() => {handleGoToContact({id: idx, name: contact.name, img: contact.imgName})}}>
+                            <View style={styles.contactImage}><Image style={styles.profileImg} source={contact.img} /></View>
+                            <View style={styles.contactDetail}>
+                                <Text style={styles.contactDetailName}>{contact.name}</Text>
+                                <Text style={styles.contactDetailMessage}>{contact.lastMessage}</Text>
+                            </View>
+                            <View style={styles.contactTail}><Text>2 minutes</Text></View>
+                        </Pressable>
                 ))}
             </View>
-       </ScrollView>
+        </ScrollView>
     )
 }
 
@@ -50,7 +54,9 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#000E08",
         height: "100%",
-        
+        display: "flex",
+
+
     },
     profiles: {
         marginTop: 40,
@@ -74,23 +80,21 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     contactsContainer: {
-        borderTopStartRadius: 45,
-        borderTopEndRadius: 45,
-        // width: "80%",
-        marginTop: 50,
-        height: 550,
+        borderRadius: 45,
+        marginTop: 100,
         display: "flex",
         flexDirection: "column",
         padding: 10,
         gap: 20,
-        backgroundColor: "#FFFFFF"
+        backgroundColor: "#FFFFFF",
+
+
     },
     contactContainer: {
         display: "flex",
         flexDirection: "row",
         paddingVertical: 8,
-        borderWidth: 1,
-        borderColor: "#FFFFFF",
+
         gap: 10,
     },
     contactImage: {

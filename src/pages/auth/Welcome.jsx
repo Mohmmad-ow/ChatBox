@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Image, Button, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, Pressable, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import Services from '../../components/Services';
 
 
-export default ({navigation, route}) => {
+export default ({ navigation, route }) => {
   const login = () => {
     navigation.navigate("Login")
   }
@@ -14,40 +14,42 @@ export default ({navigation, route}) => {
   }
 
   return (
-    <LinearGradient
-      // Background Linear Gradient
-      start={{ x: 0.1, y: 1 }}
-      end={{ x: 0.9, y: 0.3 }}
-      colors={['#0A1832', '#43116A']}
-      style={styles.background}
-    >
-      <View style={styles.titleCon}>
-        <Text style={styles.logoC}>C</Text>
-        <Text style={styles.logoText}>ChatSurf</Text>
-      </View>
-      <View style={{ marginTop: 20 }}>
-        <Text style={{ fontSize: 70, color: "#FFFFFF" }}>
-          Connect friends <Text style={{ fontWeight: 600 }}>easily & quickly</Text>
-        </Text>
-        <Text style={{ color: "#B9C1BE", marginTop: 20, fontSize: 18, lineHeight: 25 }}>
-          Our chat app is the perfect way to stay connected with friends and family.
-        </Text>
-      </View>
-      {/* Icons are here */}
-      <Services appleColor={1} borderColor={'#FFFFFF'} viewStyle={{ display: "flex", flexDirection: "row", gap: 20, marginTop: 40 }} />
-      <View style={styles.hrContainer} >
-        <View style={styles.hr}></View>
-        <Text style={styles.logoText}>OR</Text>
-        <View style={styles.hr}></View>
-      </View>
-      <Pressable style={styles.btn} onPress={signup}>
-        <Text style={styles.btnText}>Sign up with a mail</Text>
-      </Pressable>
-      <View style={styles.loginLink}>
-      <Text style={{color: "#B9C1BE"}}>Existing account?</Text>
-      <Pressable onPress={login}><Text style={{color: "#FFFFFF", fontWeight: "600"}}>Log in</Text></Pressable>
-      </View>
-    </LinearGradient>
+    <ScrollView style={{height: 400}}>
+      <LinearGradient
+        // Background Linear Gradient
+        start={{ x: 0.1, y: 1 }}
+        end={{ x: 0.9, y: 0.3 }}
+        colors={['#0A1832', '#43116A']}
+        style={styles.background}
+      >
+        <View style={styles.titleCon}>
+          <Text style={styles.logoC}>C</Text>
+          <Text style={styles.logoText}>ChatSurf</Text>
+        </View>
+        <View style={{ marginTop: 20 }}>
+          <Text style={{ fontSize: 70, color: "#FFFFFF" }}>
+            Connect friends <Text style={{ fontWeight: 600 }}>easily & quickly</Text>
+          </Text>
+          <Text style={{ color: "#B9C1BE", marginTop: 20, fontSize: 18, lineHeight: 25 }}>
+            Our chat app is the perfect way to stay connected with friends and family.
+          </Text>
+        </View>
+        {/* Icons are here */}
+        <Services appleColor={1} borderColor={'#FFFFFF'} viewStyle={{ display: "flex", flexDirection: "row", gap: 20, marginTop: 40 }} />
+        <View style={styles.hrContainer} >
+          <View style={styles.hr}></View>
+          <Text style={styles.logoText}>OR</Text>
+          <View style={styles.hr}></View>
+        </View>
+        <Pressable style={styles.btn} onPress={signup}>
+          <Text style={styles.btnText}>Sign up with a mail</Text>
+        </Pressable>
+        <View style={styles.loginLink}>
+          <Text style={{ color: "#B9C1BE" }}>Existing account?</Text>
+          <Pressable onPress={login}><Text style={{ color: "#FFFFFF", fontWeight: "600" }}>Log in</Text></Pressable>
+        </View>
+      </LinearGradient>
+    </ScrollView>
   );
 }
 
@@ -116,10 +118,10 @@ const styles = StyleSheet.create({
     color: "#000000"
   },
   loginLink: {
-    display: "flex", 
+    display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center", 
+    alignItems: "center",
     marginTop: 35,
     gap: 4
   }

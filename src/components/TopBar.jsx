@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native"
 
-const searchBar = require("../../assets/search-interface-symbol.png");
-const profilePic = require("../../assets/man.png");
+const searchBar = require("../../assets/images/search-interface-symbol.png");
+const profilePic = require("../../assets/images/man.png");
 
 export default () => {
     const styles = StyleSheet.create({

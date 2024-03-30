@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { View, Text, StyleSheet, Pressable, Image, TextInput, ScrollView } from "react-native"
 import Services from "../../components/Services"
-const backArrow = require("../../../assets/back.png")
+const backArrow = require("../../../assets/images/back.png")
 
 export default ({ navigation }) => {
     const [credentials, setCredentials] = useState({

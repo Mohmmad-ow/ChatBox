@@ -25,6 +25,17 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/SpButchLiteBold.otf",
+                    "./assets/fonts/SpButchLiteLight.otf",
+                    "./assets/fonts/SpButchLiteMedium.otf"
+        ]
+        }
+      ]
+    ]
   }
 }

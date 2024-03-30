@@ -10,6 +10,9 @@ import welcome from './src/pages/auth/Welcome';
 import Login from './src/pages/auth/Login';
 import Signup from './src/pages/auth/signup'; 
 import Home from './src/pages/Home';
+import Dms from './src/pages/chat/Dms';
+
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -32,6 +35,11 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DM"
+          component={Dms}
           options={{headerShown: false}}
         />
         <Stack.Screen

@@ -1,6 +1,6 @@
 import { Text, View, Image, StyleSheet } from "react-native";
 
-const logo = require("../../assets/favicon.png")
+const logo = require("../../assets/images/favicon.png")
 
 export default () => {
     
